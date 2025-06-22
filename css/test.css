@@ -1,0 +1,59 @@
+.test {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.test:hover {
+  background-color: blue;
+}
+
+.test:active {
+  background-color: green;
+}
+
+.test:focus {
+  background-color: yellow;
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* Extra small devices */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Small tablets */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Large tablets/laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  html {
+    font-size: 18px / 2;
+  }
+}
+
+/* Desktops */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* Extra large screens */
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 22px;
+  }
+}

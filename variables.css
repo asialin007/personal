@@ -1,0 +1,284 @@
+/*
+ * @function: generate-css-variables
+ * @description: 生成 CSS 自定义属性，将 Figma 中的设计变量转换为 CSS 变量。
+ */
+:root {
+    /* 颜色 */
+    --color-brand-5: #ff0777;
+    --color-button-1: #ff0777;
+    --color-button-2: #ff11a0;
+    --color-text-primary: #1b1b1b;
+    --color-white: #ffffff;
+
+    /* 灰色半透明 */
+    --transparency-gray-1-4: #1b1b1b0a;
+    --transparency-gray-2-8: #1b1b1b14;
+    --transparency-gray-3-16: #1b1b1b29;
+    --transparency-gray-4-24: #1b1b1b3d;
+    --transparency-gray-5-50: #1b1b1b80;
+    --transparency-gray-6-60: #1b1b1b99;
+    --transparency-gray-7-85: #1b1b1bd9;
+    --transparency-gray-8-95: #1b1b1bf2;
+
+    /* 品牌色半透明 */
+    --transparency-brand-1-4: #ff07770a;
+    --transparency-brand-2-8: #ff077714;
+    --transparency-brand-3-16: #ff077729;
+    --transparency-brand-4-24: #ff07773d;
+    --transparency-brand-5-50: #ff077780;
+    --transparency-brand-7-85: #ff0777d9;
+    --transparency-brand-8-95: #ff0777f2;
+
+    /* 白色半透明 */
+    --transparency-white-1-4: #ffffff0a;
+    --transparency-white-2-8: #ffffff14;
+    --transparency-white-3-16: #ffffff29;
+    --transparency-white-4-24: #ffffff3d;
+    --transparency-white-5-50: #ffffff80;
+    --transparency-white-6-60: #ffffff99;
+    --transparency-white-7-85: #ffffffd9;
+    --transparency-white-8-95: #fffffff2;
+
+    /* 功能色 - 青蓝色 */
+    --color-cyan-blue-1: #edfaf9;
+    --color-cyan-blue-2: #d5f5f3;
+    --color-cyan-blue-3: #96e3e2;
+    --color-cyan-blue-4: #4ed4d1;
+    --color-cyan-blue-5: #00bfbf;
+    --color-cyan-blue-6: #009496;
+    --color-cyan-blue-7: #00696b;
+
+    /* 功能色 - 蓝紫色 */
+    --color-blue-purple-2: #eae5ff;
+    --color-blue-purple-3: #c7baff;
+    --color-blue-purple-4: #9b80ff;
+    --color-blue-purple-5: #7b4fff;
+    --color-blue-purple-6: #5b32d9;
+    --color-blue-purple-7: #3d17b2;
+
+    /* 功能色 - 蓝色 */
+    --color-blue-1: #e5f2ff;
+    --color-blue-2: #b2d9ff;
+    --color-blue-3: #80bfff;
+    --color-blue-4: #4ca6ff;
+    --color-blue-5: #3092f2;
+    --color-blue-6: #177fe5;
+    --color-blue-7: #0064d9;
+
+    /* 功能色 - 暖红色 */
+    --color-warm-red-1: #fef3ec;
+    --color-warm-red-2: #ffe8db;
+    --color-warm-red-3: #ffc2a1;
+    --color-warm-red-4: #ff9966;
+    --color-warm-red-5: #ff6e26;
+    --color-warm-red-6: #e05210;
+    --color-warm-red-7: #b22d00;
+
+    /* 功能色 - 玫红色 */
+    --color-rose-red-1: #fff5fa;
+    --color-rose-red-2: #ffe5f2;
+    --color-rose-red-3: #ffa8d1;
+    --color-rose-red-4: #ff6bae;
+    --color-rose-red-5: #ff0777;
+    --color-rose-red-6: #d1045d;
+    --color-rose-red-7: #a60045;
+
+    /* 功能色 - 暖紫色 */
+    --color-warm-purple-2: #ffdeff;
+    --color-warm-purple-3: #ff9eff;
+    --color-warm-purple-4: #ff5eff;
+    --color-warm-purple-5: #f218f2;
+    --color-warm-purple-6: #cf00c8;
+    --color-warm-purple-7: #99008f;
+
+    /* 功能色 - 冷紫色 */
+    --color-cold-purple-1: #f9f2ff;
+    --color-cold-purple-2: #f2e5ff;
+    --color-cold-purple-3: #d9b2ff;
+    --color-cold-purple-4: #bf80ff;
+    --color-cold-purple-5: #a64dff;
+    --color-cold-purple-6: #822bd9;
+    --color-cold-purple-7: #6212b2;
+
+    /* 功能色 - 红色 */
+    --color-red-1: #fff2f2;
+    --color-red-2: #ffe5e5;
+    --color-red-3: #ffb2b2;
+    --color-red-4: #ff8080;
+    --color-red-5: #ff3333;
+    --color-red-6: #d90000;
+    --color-red-7: #b20000;
+
+    /* 功能色 - 灰色 */
+    --color-gray-7: #1b1b1b;
+    --color-gray-6: #5f5f5f;
+    --color-gray-5: #989898;
+    --color-gray-4: #c6c6c6;
+    --color-gray-3: #f2f2f2;
+    --color-gray-2: #f7f7f7;
+    --color-gray-1: #ffffff;
+
+    /* 功能色 - 品牌色 */
+    --color-brand-1: #fff5fa;
+    --color-brand-2: #ffe5f2;
+    --color-brand-3: #ffa8d1;
+    --color-brand-4: #ff6bae;
+    --color-brand-6: #d1045d;
+    --color-brand-7: #a60045;
+
+    /* 背景色 */
+    --bg-white: #ffffff;
+    --bg-global-gray: #f7f7f7;
+    --bg-backup-gray: #f2f2f2;
+    --bg-black: #1b1b1b;
+
+    /* 特定功能色 */
+    --color-success-safety: #00bfbf;
+    --color-disabled: #c6c6c6;
+    --color-tip-warning: #ffa622;
+    --color-secondary-auxiliary-text: #ffa8d1;
+    --color-auxiliary-text: #989898;
+    --color-strong-warning-failure: #ff3333;
+    --color-secondary-emphasis: #ff6bae;
+    --color-secondary-text: #5f5f5f;
+    --color-invalid-not-started: #c6c6c6;
+    --color-main-emphasis: #ff0777;
+    --color-text-link: #3092f2;
+
+    /* 功能色 - 金色 */
+    --color-gold-1: #faf6ef;
+    --color-gold-2: #f4e9d6;
+    --color-gold-3: #e1c696;
+    --color-gold-5: #c0984c;
+    --color-gold-6: #ab812e;
+    --color-gold-7: #947231;
+
+    /* 功能色 - 黄色 */
+    --color-yellow-1: #fff8e0;
+    --color-yellow-2: #fff0c2;
+    --color-yellow-3: #ffde7a;
+    --color-yellow-4: #ffcd45;
+    --color-yellow-5: #f7b500;
+    --color-yellow-6: #d69600;
+    --color-yellow-7: #b07500;
+
+    /* 功能色 - 橙色 */
+    --color-orange-1: #fff7ec;
+    --color-orange-2: #ffe3ba;
+    --color-orange-3: #ffcf87;
+    --color-orange-4: #ffba55;
+    --color-orange-5: #ffa622;
+    --color-orange-6: #dc8e1b;
+    --color-orange-7: #b87614;
+
+    /* 功能色 - 绿色 */
+    --color-green-1: #eafaf7;
+    --color-green-2: #c9f2ea;
+    --color-green-3: #65dbc4;
+    --color-green-4: #00c49d;
+    --color-green-5: #00b38e;
+    --color-green-6: #00a37e;
+    --color-green-7: #00926f;
+
+    /* 渐变 (Figma数据中为空，假定在其他地方定义或用于插图) */
+    --gradient-light-purple-blue-level1: '';
+    --gradient-dark-cyan-green: '';
+    --gradient-light-purple-level2: '';
+    --gradient-light-rose-red-level1: '';
+    --gradient-dark-purple: '';
+    --gradient-light-orange-level2: '';
+    --gradient-light-warm-green-level1: '';
+    --gradient-light-green-level2: '';
+    --gradient-light-cyan-green-level1: '';
+    --gradient-light-blue-level2: '';
+    --gradient-light-orange-red-level1: '';
+    --gradient-dark-orange: '';
+    --gradient-light-red-level2: '';
+    --gradient-light-red-level1: '';
+    --gradient-light-rose-red-level2: '';
+
+    /* 边框圆角 */
+    --border-radius-8: 8px;
+    --border-radius-24: 24px;
+    --border-radius-12: 12px;
+    --border-radius-6: 6px;
+    --border-radius-16: 16px;
+    --border-radius-4: 4px;
+
+    /* 字号 */
+    --font-size-12: 12px;
+    --font-size-16: 16px;
+    --font-size-11: 11px;
+    --font-size-32: 32px;
+    --font-size-28: 28px;
+    --font-size-24: 24px;
+    --font-size-20: 20px;
+    --font-size-18: 18px;
+    --font-size-15: 15px;
+    --font-size-14: 14px;
+    --font-size-13: 13px;
+    --font-size-10: 10px;
+
+    /* 字体 */
+    --font-family-pingfang-sc: "PingFang SC";
+    --font-family-avenir: "Avenir";
+    --font-family-sf-pro-text: "SF Pro Text";
+
+    /* 行高 */
+    --line-height-16: 16px;
+    --line-height-20: 20px;
+    --line-height-36: 36px;
+    --line-height-32: 32px;
+    --line-height-28: 28px;
+    --line-height-24: 24px;
+    --line-height-22: 22px;
+    --line-height-18: 18px;
+    --line-height-14: 14px;
+
+    /* 字重 */
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+    --font-weight-heavy: 900;
+    --font-weight-semibold: 600;
+    --font-weight-ultrabold: 800;
+
+    /* 文字颜色 */
+    --color-g-7-primary-text: #111822;
+    --color-g-6-secondary-text: #444951;
+
+    /* 复合字体样式 - 通用文本 */
+    --font-secondary-text-emphasis-12m: "PingFang SC" Medium 12px/16px;
+    --font-title-16m: "PingFang SC" Medium 16px/20px;
+    --font-auxiliary-text-11r: "PingFang SC" Regular 11px/16px;
+    --font-extra-large-title-32m: "PingFang SC" Semibold 32px/36px;
+    --font-large-title-28m: "PingFang SC" Semibold 28px/32px;
+    --font-level1-large-title-24m: "PingFang SC" Semibold 24px/28px;
+    --font-level2-large-title-20m: "PingFang SC" Medium 20px/24px;
+    --font-large-title-18m: "PingFang SC" Medium 18px/22px;
+    --font-title-16r: "PingFang SC" Regular 16px/20px;
+    --font-title-15m: "PingFang SC" Medium 15px/20px;
+    --font-title-15r: "PingFang SC" Regular 15px/20px;
+    --font-body-emphasis-14m: "PingFang SC" Medium 14px/18px;
+    --font-body-14r: "PingFang SC" Regular 14px/18px;
+    --font-small-body-emphasis-13m: "PingFang SC" Medium 13px/18px;
+    --font-small-body-13r: "PingFang SC" Regular 13px/18px;
+    --font-secondary-text-12r: "PingFang SC" Regular 12px/16px;
+    --font-auxiliary-text-emphasis-11m: "PingFang SC" Medium 11px/16px;
+    --font-label-text-10m: "PingFang SC" Medium 10px/14px;
+    --font-label-text-10r: "PingFang SC" Regular 10px/14px;
+
+    /* 复合字体样式 - 价格 */
+    --font-price-32: "Avenir" Heavy 32px/36px;
+    --font-price-28: "Avenir" Heavy 28px/32px;
+    --font-price-24: "Avenir" Heavy 24px/28px;
+    --font-price-20: "Avenir" Heavy 20px/24px;
+    --font-price-18: "Avenir" Heavy 18px/22px;
+    --font-price-14: "Avenir" Heavy 14px/18px;
+    --font-price-12: "Avenir" Heavy 12px/16px;
+    --font-price-16: "Avenir" Heavy 16px/20px;
+    --font-price-13: "Avenir" Heavy 13px/18px;
+    --font-price-11: "Avenir" Heavy 11px/16px;
+
+    /* 默认样式 */
+    --font-default-bold-subheadline: "SF Pro Text" Semibold 15px/20px;
+}

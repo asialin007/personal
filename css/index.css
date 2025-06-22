@@ -1,0 +1,205 @@
+ body {
+     width: 100%;
+     max-width: 1024px;
+     min-width: 375px;
+     margin: 0 auto;
+     font-size: 14px;
+     font-family: -apple-system, Helvetica, sans-serif;
+     color: #666;
+     line-height: 1.5;
+     background-color: #f5f5f5;
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+
+ /* 手机容器 */
+ .box {
+     /* display: flex; */
+     margin: 0 auto;
+     width: 100%;
+     height: 100%;
+     background-color: #fff;
+     /* border-radius: 20px; */
+     overflow: hidden;
+ }
+
+ /* 搜索框 */
+ .search {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-top: 30px;
+     padding: 10px;
+     width: 100%;
+     height: 44px;
+     gap: 8px;
+ }
+
+ /* 输入框 */
+ .search input {
+     flex: 1;
+     /* 去除浏览器默认样式，重置基础样式 */
+     outline: none;
+     /* 去除聚焦时的外边框 */
+     border: none;
+     /* 去除默认边框 */
+     background: none;
+     /* 去除默认背景 */
+     box-shadow: none;
+     /* 去除阴影 */
+     appearance: none;
+     /* 去除系统默认样式（部分浏览器） */
+     -webkit-appearance: none;
+     /* 兼容 Safari */
+     font-size: 14px;
+     padding: 0 12px;
+     width: 100%;
+     height: 34px;
+     border-radius: 8px;
+     background-color: #f0f0f0;
+     transition: box-shadow 0.2s;
+ }
+
+ /* 输入框聚焦 */
+ .search input:focus {
+     /* 聚焦时高亮输入框 */
+     box-shadow: 0 0 0 2px #000;
+     background-color: #fff;
+ }
+
+ .search input::placeholder {
+     color: #999;
+
+ }
+
+ /* 按钮 */
+ .search button {
+     /* flex: 1; */
+     width: 60px;
+     height: 34px;
+     background-color: #000;
+     color: #fff;
+     font-size: 14px;
+     border-radius: 8px;
+     border: none;
+     outline: none;
+     cursor: pointer;
+ }
+
+ /* 项目展示标题 */
+ .content-title {
+     padding: 10px;
+     padding-bottom: 0px;
+     width: 100%;
+     /* height: 44px; */
+     font-size: 16px;
+     line-height: 16px;
+     font-weight: bold;
+     color: #000;
+ }
+
+ .content-title p {
+     padding-left: 10px;
+     border-left: 4px solid #000;
+     /* border-radius: 4px; */
+ }
+
+ /* 导航区 */
+ .nav {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px;
+     width: 100%;
+     /* height: 44px; */
+     gap: 8px;
+ }
+
+ /* 导航项目单元 */
+ .nav-link {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 10px;
+     border-radius: 8px;
+     font-size: 14px;
+     gap: 0px;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     background-color: #f0f0f0;
+     text-decoration: none;
+     color: inherit;
+     transition: all 0.3s;
+ }
+
+ .nav-link:hover {
+     background: linear-gradient(to right, #A64DFF, #D154FF);
+     color: #fff;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+     transform: translateY(-2px) scale(1.02);
+ }
+
+ .nav-link:nth-child(2):hover {
+     background: linear-gradient(to right, #0F9258, #24D787);
+     color: #fff;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+     transform: translateY(-2px) scale(1.02);
+ }
+
+ .nav-link:nth-child(3):hover {
+     background: linear-gradient(to right, #FC4956, #FF716E);
+     color: #fff;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+     transform: translateY(-2px) scale(1.02);
+ }
+
+ .nav-link:nth-child(4):hover {
+     background: linear-gradient(to right, #00BCF0, #48D4D1);
+     color: #fff;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+     border-radius: 10px;
+     transform: translateY(-2px) scale(1.02);
+ }
+
+ .nav-link:hover:before {
+     background-color: #fff;
+ }
+
+ /* 圆形图标 */
+ .nav-link:before {
+     content: '';
+     display: block;
+     width: 40px;
+     height: 40px;
+     /* background-color: #000; */
+     border-radius: 50%;
+     flex-shrink: 0;
+     margin-bottom: 10px;
+     background: #e8e8e8 url(../images/jlt.png) no-repeat 0 0;
+     /* 既有图片又有黑色背景色 */
+     background-size: 40px auto;
+ }
+
+ /* 用精灵图的位置坐标定位不同的图片 */
+ .nav-link:nth-child(2):before {
+     background-position: 0 -40px;
+ }
+
+ .nav-link:nth-child(3):before {
+     background-position: 0 -80px;
+ }
+
+ .nav-link:nth-child(4):before {
+     background-position: 0 -120px;
+ }

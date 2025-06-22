@@ -1,0 +1,317 @@
+<!--
+  HTML文件：个人信息卡片展示页面
+  功能：展示个人姓名、联系方式和微信二维码，并具备响应式布局。
+  重要提示：请确保 `images` 文件夹在与 `background.html` 同级目录下，
+            并且 `asia.png` 和 `二维码.png` 这两张图片存在于 `images` 文件夹中。
+            同时，请确保图片的文件名和扩展名与代码中完全匹配（包括大小写）。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息卡片展示</title>
+    <style>
+        /*
+      全局样式重置与基本布局
+      ----------------------------------------------------------------------
+    */
+        :root {
+            /* 亮色模式默认颜色 */
+            --bg-color-page: #f0f2f5;
+            --bg-color-card: #fff;
+            --text-color-primary: #1b1b1b;
+            --text-color-secondary: #5b5b5b;
+            --text-color-divider: #a4a4a4;
+            --text-color-value: #000;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --image-placeholder-color: #eee;
+        }
+
+        .dark-mode {
+            /* 暗黑模式颜色 */
+            --bg-color-page: #2c2c2c;
+            --bg-color-card: #3a3a3a;
+            --text-color-primary: #f0f0f0;
+            --text-color-secondary: #c0c0c0;
+            --text-color-divider: #888;
+            --text-color-value: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --image-placeholder-color: #555;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* 确保html和body占据整个视口高度 */
+            margin: 0;
+            padding: 0;
+            /* 使用思源黑体作为首选，如果未安装则回退到其他常见字体 */
+            font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans CN', 'Noto Sans CJK SC', Arial, sans-serif;
+            background-color: var(--bg-color-page);
+            /* 使用CSS变量 */
+            transition: background-color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            /* 水平居中卡片 */
+            align-items: center;
+            /* 垂直居中卡片 */
+            min-height: 100vh;
+            /* 确保body至少占据整个视口高度 */
+            padding: 20px;
+            /* 增加body的内边距，防止卡片贴边 */
+        }
+
+        * {
+            box-sizing: border-box;
+            /* 统一盒模型，padding和border不增加元素总尺寸 */
+        }
+
+        /*
+      卡片容器样式：响应式宽度与宽高比维持
+      ----------------------------------------------------------------------
+    */
+        .card-bg {
+            --card-original-width: 300;
+            /* Figma设计稿中的原始宽度（单位：px） */
+            --card-original-height: 680;
+            /* Figma设计稿中的原始高度（单位：px） */
+            /*
+        响应式宽度：使用 clamp() 函数，确保卡片宽度在指定范围内自适应。
+        - 最小宽度: 220px (防止在极小屏幕上过窄)
+        - 弹性宽度: 90vw (占据视口宽度的90%)
+        - 最大宽度: 300px (不超过设计稿原始宽度)
+      */
+            --card-current-width: clamp(220px, 90vw, 300px);
+
+            background: var(--bg-color-card);
+            /* 使用CSS变量 */
+            border-radius: 10px;
+            /* 卡片圆角 */
+            position: relative;
+            /* 为内部绝对定位元素提供参考 */
+            width: var(--card-current-width);
+            /* 应用计算出的响应式宽度 */
+            height: 0;
+            /* 初始高度为0，配合padding-bottom实现响应式高度 */
+            /* 通过padding-bottom动态计算高度，保持卡片内容区域的原始宽高比 */
+            padding-bottom: calc(var(--card-original-height) / var(--card-original-width) * var(--card-current-width));
+            margin: 0 auto;
+            /* 上下外边距0，左右自动（实现水平居中） */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            /* 使用CSS变量 */
+            overflow: hidden;
+            /* 隐藏超出卡片圆角范围的内容 */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        /*
+      顶部装饰背景图片样式
+      ----------------------------------------------------------------------
+    */
+        .card-top-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* 宽度占满父容器 */
+            aspect-ratio: 1 / 1;
+            /* 保持1:1宽高比，使图片区域为正方形 */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            /* **** 重要：请替换为你的顶部背景图片路径 **** */
+            background: url('./images/aisa.JPG') no-repeat center / cover;
+            /* 图片居中，覆盖整个区域 */
+            background-color: var(--image-placeholder-color);
+            /* 使用CSS变量 */
+        }
+
+        /*
+      姓名文本样式：响应式定位与字体大小
+      ----------------------------------------------------------------------
+    */
+        .card-name {
+            position: absolute;
+            /* 动态计算left和top值，使其随卡片缩放而等比例移动 */
+            left: calc(20 / var(--card-original-width) * 100%);
+            top: calc(316 / var(--card-original-height) * 100%);
+            /* 字体大小随卡片宽度等比例缩放 */
+            font-size: calc(24 / var(--card-original-width) * var(--card-current-width));
+            font-weight: bold;
+            color: var(--text-color-primary);
+            /* 使用CSS变量 */
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            /* 防止姓名文本换行 */
+            transition: color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        /*
+      信息行通用样式（电话、邮箱）：响应式定位与字体大小
+      ----------------------------------------------------------------------
+    */
+        .card-info {
+            position: absolute;
+            left: calc(20 / var(--card-original-width) * 100%);
+            /* 字体大小随卡片宽度等比例缩放 */
+            font-size: calc(16 / var(--card-original-width) * var(--card-current-width));
+            color: var(--text-color-secondary);
+            /* 使用CSS变量 */
+            line-height: 1.2;
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        /* 电话信息行的特定垂直定位 */
+        .card-info.phone {
+            top: calc(354 / var(--card-original-height) * 100%);
+        }
+
+        /* 邮箱信息行的特定垂直定位 */
+        .card-info.email {
+            top: calc(381 / var(--card-original-height) * 100%);
+            white-space: nowrap;
+            /* 防止邮箱地址文本换行 */
+        }
+
+        /* 信息分隔符样式 */
+        .card-info .divider {
+            color: var(--text-color-divider);
+            /* 使用CSS变量 */
+            margin: 0 calc(4 / var(--card-original-width) * var(--card-current-width));
+            transition: color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        /* 信息值样式 */
+        .card-info .info-value {
+            color: var(--text-color-value);
+            /* 使用CSS变量 */
+            font-weight: normal;
+            /* 间隔也随卡片宽度等比例缩放 */
+            margin-left: calc(2 / var(--card-original-width) * var(--card-current-width));
+            transition: color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+
+        /*
+      二维码图片样式：响应式定位与尺寸
+      ----------------------------------------------------------------------
+    */
+        .card-qr-bg {
+            position: absolute;
+            left: 50%;
+            /* 水平居中 */
+            top: calc(424 / var(--card-original-height) * 100%);
+            /* 宽度随卡片宽度等比例缩放 */
+            width: calc(200 / var(--card-original-width) * 100%);
+            aspect-ratio: 1 / 1;
+            /* 保持1:1宽高比，确保为正方形 */
+            border-radius: 10px;
+            /* 适当的圆角 */
+            /* **** 重要：请替换为你的二维码图片路径 **** */
+            background: url('./images/二维码.png') no-repeat center / cover;
+            /* 图片居中，覆盖整个区域 */
+            background-color: var(--image-placeholder-color);
+            /* 使用CSS变量 */
+            transform: translateX(-50%);
+            /* 精确水平居中对齐 */
+            cursor: pointer;
+            /* 鼠标悬停时显示手型光标 */
+        }
+
+        /*
+      二维码说明文字样式：响应式定位与字体大小
+      ----------------------------------------------------------------------
+    */
+        .card-qr-tip {
+            position: absolute;
+            top: calc(645 / var(--card-original-height) * 100%);
+            left: 50%;
+            /* 水平居中 */
+            /* 宽度随卡片宽度等比例缩放 */
+            width: calc(132 / var(--card-original-width) * 100%);
+            color: var(--text-color-divider);
+            /* 使用CSS变量 */
+            font-size: calc(12 / var(--card-original-width) * var(--card-current-width));
+            text-align: center;
+            transform: translateX(-50%);
+            /* 精确水平居中对齐 */
+            line-height: 1.2;
+            transition: color 0.3s ease;
+            /* 添加过渡效果 */
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="card-bg">
+            <!-- 顶部装饰背景区域 -->
+            <div class="card-top-bg" aria-hidden="true"></div>
+
+            <!-- 姓名显示区域 -->
+            <div class="card-name">Asialin</div>
+
+            <!-- 电话信息区域 -->
+            <div class="card-info phone">
+                <span>电话</span>
+                <span class="divider">丨</span>
+                <span class="info-value">135 6037 6167</span>
+            </div>
+
+            <!-- 邮箱信息区域 -->
+            <div class="card-info email">
+                <span>邮箱</span>
+                <span class="divider">丨</span>
+                <span class="info-value">asialin007@gmail.com</span>
+            </div>
+
+            <!-- 二维码图片区域 -->
+            <div class="card-qr-bg" aria-hidden="true" title="点击可以切换模式"></div>
+
+            <!-- 二维码说明文字区域 -->
+            <div class="card-qr-tip">扫一扫二维码，加我微信</div>
+        </section>
+    </main>
+
+    <script>
+        /*
+          JavaScript：暗黑模式切换逻辑 (根据系统偏好自动切换)
+          ----------------------------------------------------------------------
+        */
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+
+            // 1. 页面加载时：根据当前系统主题设置模式
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+            if (prefersDarkMode.matches) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+
+            // 2. 监听系统主题变化：自动切换模式
+            prefersDarkMode.addEventListener('change', (event) => {
+                if (event.matches) {
+                    body.classList.add('dark-mode');
+                } else {
+                    body.classList.remove('dark-mode');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
